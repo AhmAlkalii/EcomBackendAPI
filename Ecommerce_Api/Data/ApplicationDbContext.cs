@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Ecommerce_Api.Data
 {
     // We will use identitydbcontext instead of dbcontext because it gives us preexisting tables which helps with authentication
-    //here orignally when we were using idenityUser in program.cs we only has IdentityDbcontext
+    //here orignally when we were using idenityUser in program.cs we only have IdentityDbcontext
     //but since we are switching we have to specify which is why we add the IdentityDbContext<ApplicationUser>  Application inside
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

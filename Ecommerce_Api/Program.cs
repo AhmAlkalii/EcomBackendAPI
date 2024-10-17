@@ -1,12 +1,16 @@
 using Azure.Storage.Blobs;
 using Ecommerce_Api.Data;
 using Ecommerce_Api.Models;
+using Ecommerce_Api.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+
+//********************************************************************************************************************************
 
 // These are all the new additions
 
@@ -21,7 +25,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 builder.Services.AddSingleton(u => new BlobServiceClient(
     builder.Configuration.GetConnectionString("StorageAccount")));
 
-
+builder.Services.AddSingleton<IBlobService, BlobService>();
 //Here we make sure to speficy the idenity for all the tables we have so we have user and thier role and the fact that we are using entity framewrok core
 //old
 //builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -31,6 +35,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFramework
 
 
 //they stop here
+//********************************************************************************************************************************
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
