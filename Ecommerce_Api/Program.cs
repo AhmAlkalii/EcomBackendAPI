@@ -1,3 +1,4 @@
+using Azure.Storage.Blobs;
 using Ecommerce_Api.Data;
 using Ecommerce_Api.Models;
 using Microsoft.AspNetCore.Identity;
@@ -15,6 +16,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefualtSQLConnection"));
     });
+
+//we add a singleton implementation for the blob service client
+builder.Services.AddSingleton(u => new BlobServiceClient(
+    builder.Configuration.GetConnectionString("StorageAccount")));
+
 
 //Here we make sure to speficy the idenity for all the tables we have so we have user and thier role and the fact that we are using entity framewrok core
 //old
