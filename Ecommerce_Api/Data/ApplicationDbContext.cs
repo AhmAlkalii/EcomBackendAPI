@@ -17,6 +17,8 @@ namespace Ecommerce_Api.Data
         //we set the schema/model to refernce from and it takes the name we give here as table name
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<MenuItem>  MenuItems{ get; set; }
+        public DbSet<ShoppingCart>  ShoppingCarts{ get; set; }
+        public DbSet<CartItem>  CartItems{ get; set; }
 
         //here we will fill the MenuItems table with values it is called seeding
         protected override void OnModelCreating(ModelBuilder modelBuilder)
