@@ -29,7 +29,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 
 //we add a singleton implementation for the blob service client
 builder.Services.AddSingleton(u => new BlobServiceClient(
-    builder.Configuration.GetConnectionString("StorageAccount")));
+builder.Configuration.GetConnectionString("StorageAccount")));
 
 builder.Services.AddSingleton<IBlobService, BlobService>();
 //Here we make sure to speficy the idenity for all the tables we have so we have user and thier role and the fact that we are using entity framewrok core
